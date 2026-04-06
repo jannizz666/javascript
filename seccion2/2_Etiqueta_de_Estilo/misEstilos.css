@@ -1,0 +1,21 @@
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(148, 40, 40);
+}
+
+#perros {
+    color: rgb(220, 115, 30);
+    border: 5px; border-style: dotted;
+}
+
+.estiloCompartido {
+    color: rgb(243, 218, 76);
+    border: 5px; border-style: solid;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium ;
+}
+
+p{
+    color: rgb(43, 226, 86);
+    border: 1px; border-style: solid;
+}

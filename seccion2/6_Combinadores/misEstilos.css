@@ -1,0 +1,15 @@
+div p {
+    color: cornflowerblue;
+}
+
+ol > li{
+    font-weight: bolder;
+}
+
+h2 ~ h3{
+    background-color: rgb(119, 205, 120);
+}
+
+div P[align="left"]:hover{
+    background-color: darkslategray;
+}
