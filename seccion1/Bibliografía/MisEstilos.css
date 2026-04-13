@@ -1,0 +1,66 @@
+body{
+    background-image: url('fotos/19418.gif');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.cuadrado{
+    margin-left: 12%;
+    width: 67.85%;
+    height: 60px;
+    background-color: whitesmoke;
+    display: flex;
+    border-style: hidden hidden hidden solid;
+    border-color: darkslategrey;
+}
+
+p{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.texto{
+display: flex;
+  margin-left: 12%;
+  margin-right: 20%;
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 8px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+ul.footer {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333333;
+  margin-left: 12%;
+  margin-right: 20%;
+}
+
+ul.footer li a {
+  display: block;
+  color: #f1f1f1;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.footer li a:hover {
+  background-color: #dddddd;
+  color: black;
+}
+
+.menu {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.image{
+    border-style: solid;
+    border-radius: 50%;
+}
