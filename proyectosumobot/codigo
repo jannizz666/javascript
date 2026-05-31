@@ -1,0 +1,159 @@
+import board
+import time
+import math
+from time import sleep, monotonic
+
+from ideaboard import IdeaBoard
+from adafruit_lsm6ds.lsm6ds3trc import LSM6DS3TRC
+from hcsr04 import HCSR04
+
+ib = IdeaBoard()
+
+UMBRAL_LINEA = 3000
+DISTANCIA_ATAQUE = 40
+
+VELOCIDAD_ATAQUE = 1.0
+VELOCIDAD_BUSQUEDA = 0.7
+VELOCIDAD_ESCAPE = 1.0
+
+
+def calibrar_drift(sensor, segundos=3):
+    suma = 0
+    muestras = 0
+
+    inicio = monotonic()
+
+    while monotonic() - inicio < segundos:
+
+        dato = sensor.gyro[2]
+
+        if abs(dato) < 0.01:
+            suma += dato
+            muestras += 1
+
+        sleep(0.005)
+
+    if muestras == 0:
+        return 0
+
+    return suma / muestras
+
+
+
+def motores(izq, der):
+    ib.motor_1.throttle = max(-1, min(1, izq))
+    ib.motor_2.throttle = max(-1, min(1, der))
+
+
+def detener():
+    motores(0, 0)
+
+
+
+def leer_linea():
+    return [
+        Sensor1.value,
+        Sensor2.value,
+        Sensor3.value,
+        Sensor4.value
+    ]
+
+
+def hay_linea():
+    sensores = leer_linea()
+
+    for valor in sensores:
+        if valor < UMBRAL_LINEA:
+            return True
+
+    return False
+
+
+def escapar_linea():
+
+    ib.pixel = (255, 0, 0)
+
+    motores(-VELOCIDAD_ESCAPE, -VELOCIDAD_ESCAPE)
+    sleep(0.20)
+
+    motores(-1, 1)
+    sleep(0.18)
+
+    detener()
+
+
+def buscar():
+
+    ib.pixel = (0, 0, 255)
+
+    # giro continuo
+    motores(
+        VELOCIDAD_BUSQUEDA,
+        -VELOCIDAD_BUSQUEDA
+    )
+
+
+
+def atacar():
+
+    ib.pixel = (255, 255, 0)
+
+    motores(
+        VELOCIDAD_ATAQUE,
+        VELOCIDAD_ATAQUE
+    )
+
+
+
+i2c = board.I2C()
+
+sensor = LSM6DS3TRC(i2c, 0x6B)
+
+Sensor1 = ib.AnalogIn(board.IO33)
+Sensor2 = ib.AnalogIn(board.IO32)
+Sensor3 = ib.AnalogIn(board.IO35)
+Sensor4 = ib.AnalogIn(board.IO34)
+
+sonar = HCSR04(board.IO26, board.IO25)
+
+print("Calibrando giroscopio...")
+drift = calibrar_drift(sensor, 3)
+print("Drift:", drift)
+
+
+ib.pixel = (0, 255, 0)
+
+sleep(5)
+
+motores(1, 1)
+sleep(0.25)
+
+motores(1, -1)
+sleep(0.15)
+
+detener()
+
+
+while True:
+
+    if hay_linea():
+        escapar_linea()
+        continue
+
+    try:
+        distancia = sonar.dist_cm()
+    except:
+        distancia = -1
+
+    if distancia != -1 and distancia < DISTANCIA_ATAQUE:
+
+        print("OBJETIVO:", distancia)
+
+        atacar()
+
+    else:
+
+        buscar()
+
+    sleep(0.01)
+    
