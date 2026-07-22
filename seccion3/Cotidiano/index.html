@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="misEstilos.css">
+    <title>Juego de preguntas</title>
+</head>
+
+    <body onload="ComenzarTiempo()">
+        <h1>Responde las siguientes preguntas sobre Mitologia Griega y Grecia Antigua en el tiempo indicado: </h1> <h1 id="Contador">30</h1>
+    <p>1. ¿Quien fue el hijo de Cronos que no fue devorado?</p>
+    <input type="text" id="primeraPregunta">
+
+    <p>2. ¿Quién lanzo la manzana dorada que hizo a Hera, Athenea y Afrodita a competir?</p>
+    <input type="text" id="segundaPregunta">
+
+    <p>3. ¿Cómo se llama la esposa de Odiseo en "La Odisea" de Homero?<p>
+
+    <input type="text" id="terceraPregunta">
+
+    <p>4. ¿Quien es la personificación del Sol?</p>
+    <input type="text" id="cuartaPregunta">
+
+    <p>5. ¿Quien es el Dios representado en la imagen, conocido como el mensajero de los Dioses?</p>
+    <img src="imagenes/images.jpg"
+    width="200px"> <br> <br>
+
+    <input type="text" id="quintaPregunta">
+        <br> <br>
+    <button onclick="enviarRespuestas()">Terminar cuestionario</button> <br>
+    <button onclick="reiniciarJuego()">Volver a intentar</button>
+
+    <script>
+
+        let tiempo = 30;
+        let intervalo;
+
+        function actualizarContador() {
+            document.getElementById("Contador").textContent = tiempo;
+        }
+
+        function contar() {
+            tiempo--;
+            actualizarContador()
+
+            if(tiempo<=0){
+                clearInterval(intervalo)
+                alert("Juego terminado por tiempo, vuelve a intentar")
+            }
+        }
+
+        function ComenzarTiempo() {
+            intervalo = setInterval(contar, 1000)
+        }
+
+        function reiniciarJuego() {
+            clearInterval(intervalo)
+            tiempo = 30;
+            actualizarContador();
+            intervalo = setInterval(contar, 1000)
+        }
+
+        function enviarRespuestas() {
+
+            let r1 = document.getElementById("primeraPregunta").value
+            let r2 = document.getElementById("segundaPregunta").value
+            let r3 = document.getElementById("terceraPregunta").value
+            let r4 = document.getElementById("cuartaPregunta").value
+            let r5 = document.getElementById("quintaPregunta").value
+
+            alert("Tus respuestas fueron:\n" +
+            "1.  " + r1 + "\n" +
+            "2.  " + r2 + "\n" +
+            "3.  " + r3 + "\n" +
+            "4.  " + r4 + "\n" +
+            "5.  " + r5 + "\n"+
+            "Las respuestas correctas son:\n"+"1.  Zeus"+"\n"+"2.  Eris"+"\n"+"3.  Penélope"+"\n"+"4.  Helios"+"\n"+"5.  Hermes"+
+            "\nFecha actual:\n"+
+            new Date().toLocaleDateString("es-Es"))
+        }
+        actualizarContador()
+    </script>
+</body>
+</html>
