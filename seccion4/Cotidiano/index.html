@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora</title>
+</head>
+
+<body>
+    <h1>Calculadora</h1>
+    <div class="pantalla">
+        <input type="number" id="numero1">
+        <input type="number" id="numero2">
+    </div>
+
+    <div class="teclado">
+        <p>
+            <button onclick="setMas()">+</button>
+            <button onclick="setMenos()">-</button>
+            <button onclick="setMulti()">X</button>
+            <button onclick="setDivi()">/</button>
+        </p>
+
+
+
+        <p>
+            <button onclick="raiz()">raiz</button>
+            <button onclick="potencia()">potencia</button>
+            <button onclick="valorAbsoluto()">absoluto</button>
+            <button onclick="numeroRandom()">random</button>
+        </p>
+
+    </div>
+
+    <h2 id="resultado">Resultado:</h2>
+    <div id="mostrarResultado()"></div>
+
+        <p>
+            <button onclick="redondearCercano()">round</button>
+            <button onclick="redondearAbajo()">floor</button>
+            <button onclick="redondearArriba()">ceil</button>
+        </p>
+
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Parámetros 2</title>
+</head>
+
+<body>
+    <p>
+        <button onclick="mostrarMensaje()">Click aqui</button>
+    </p>
+
+    <p>Insertar Mensaje</p>
+    <input type="text" id="textoMensaje">
+
+    <script>
+
+        function mostrarMensaje(mensaje1){
+            resultado = mensaje1
+            let elementoTexto = document.getElementById("textoMensaje").value;
+            alert(elementoTexto);
+
+            return resultado
+        }
+
+    </script>
+</body>
+
+</html>
