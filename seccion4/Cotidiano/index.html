@@ -4,7 +4,7 @@
 
 <head>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="misEstilos.css">
     <title>Calculadora</title>
 </head>
 
@@ -15,7 +15,9 @@
         <input type="number" id="numero2">
     </div>
 
-    <div class="teclado">
+    <div class="contenedor-video"></div>
+
+    <div>
         <p>
             <button onclick="setMas()">+</button>
             <button onclick="setMenos()">-</button>
@@ -26,8 +28,8 @@
 
 
         <p>
-            <button onclick="raiz()">raiz</button>
-            <button onclick="potencia()">potencia</button>
+            <button onclick="setRaiz()">raiz</button>
+            <button onclick="SetPotencia()">potencia</button>
             <button onclick="valorAbsoluto()">absoluto</button>
             <button onclick="numeroRandom()">random</button>
         </p>
@@ -35,7 +37,8 @@
     </div>
 
     <h2 id="resultado">Resultado:</h2>
-    <div id="mostrarResultado()"></div>
+
+    <p id="cajaresultado">__</p>
 
         <p>
             <button onclick="redondearCercano()">round</button>
@@ -45,6 +48,128 @@
 
     </div>
 
+
+    <script>
+        function sumar(numero1, numero2) {
+        resultado = numero1 + numero2;
+        return resultado
+        }
+
+        function setMas() {
+            let elementoNumero1 = parseFloat(document.getElementById("numero1").value);
+            let elementoNumero2 = parseFloat(document.getElementById("numero2").value);
+
+            let elementoSuma = sumar(elementoNumero1, elementoNumero2);
+
+            document.getElementById("cajaresultado").textContent = elementoSuma;
+        }
+
+        function restar(numero1, numero2){
+            resultado = numero1 - numero2
+            return resultado
+        }
+
+        function setMenos() {
+            let elementoNumero1 = parseFloat(document.getElementById("numero1").value);
+            let elementoNumero2 = parseFloat(document.getElementById("numero2").value);
+
+            elementoResta = restar(elementoNumero1, elementoNumero2);
+
+            document.getElementById("cajaresultado").textContent = elementoResta;
+        }
+
+        function multi(numero1, numero2) {
+            resultado = numero1 * numero2;
+            return resultado
+        }
+
+        function setMulti() {
+            let elementoNumero1 = parseFloat(document.getElementById("numero1").value);
+            let elementoNumero2 = parseFloat(document.getElementById("numero2").value);
+
+            elementoMulti = multi(elementoNumero1, elementoNumero2);
+
+            document.getElementById("cajaresultado").textContent = elementoMulti;
+        }
+
+        function divi(numero1, numero2) {
+            resultado = numero1 / numero2;
+            return resultado
+        }
+
+        function setDivi() {
+            let elementoNumero1 = parseFloat(document.getElementById("numero1").value);
+            let elementoNumero2 = parseFloat(document.getElementById("numero2").value);
+
+            elementoDivi = divi(elementoNumero1, elementoNumero2);
+
+            document.getElementById("cajaresultado").textContent = elementoDivi;
+        }
+
+        function raiz(numero1) {
+        resultado = Math.sqrt(numero1)
+        return resultado
+        }
+
+        function setRaiz() {
+            let elementoNumero1 = parseFloat(document.getElementById("numero1").value);
+
+            elementoRaiz = raiz(elementoNumero1);
+
+            document.getElementById("cajaresultado").textContent = elementoRaiz;
+        }
+
+        function potencia(numero1, numero2) {
+            resultado = Math.pow(numero1,numero2)
+            return resultado
+        }
+
+        function SetPotencia() {
+            let elementoNumero1 = parseFloat(document.getElementById("numero1").value);
+            let elementoNumero2 = parseFloat(document.getElementById("numero2").value);
+
+            elementoPotencia = potencia(elementoNumero1, elementoNumero2);
+
+            document.getElementById("cajaresultado").textContent = elementoPotencia;
+        }
+
+        function absoluto(numero1, numero2) {
+            resultado = Math.abs(numero1,numero2)
+            return resultado
+        }
+
+        function valorAbsoluto() {
+            let elementoNumero1 = parseFloat(document.getElementById("numero1").value);
+            let elementoNumero2 = parseFloat(document.getElementById("numero2").value);
+
+            elementoAbsoluto = absoluto(elementoNumero1, elementoNumero2);
+
+            document.getElementById("cajaresultado").textContent = elementoAbsoluto;
+        }
+
+        function numeroRandom() {
+            let Aleatorio = Math.random()
+            document.getElementById("cajaresultado").textContent = Aleatorio;
+        }
+
+        function redondearCercano() {
+            let redondear = Math.round(resultado)
+
+            document.getElementById("cajaresultado").textContent = redondear
+        }
+
+        function redondearAbajo() {
+            let redondear = Math.floor(resultado)
+
+            document.getElementById("cajaresultado").textContent = redondear
+        }
+
+        function redondearArriba() {
+            let redondear = Math.ceil(resultado)
+
+            document.getElementById("cajaresultado").textContent = redondear
+        }
+    </script>
 
 
 </body>
