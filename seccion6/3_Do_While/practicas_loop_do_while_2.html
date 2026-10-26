@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Practica Do While 2</title>
+</head>
+<body>
+    <script>
+        function testLoop(num) {
+            let multiplicar = 1;
+
+            do {
+                let resultado = num *multiplicar
+                console.log(num + "x" + multiplicar + "=" + resultado);
+                multiplicar++
+            } while (multiplicar <=10)
+        }
+
+        let numUser = prompt("Ingrese el numero que desea multiplicar");
+
+        testLoop(numUser);
+    </script>
+</body>
+</html>
