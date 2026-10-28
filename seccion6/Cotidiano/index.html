@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Promedios</title>
+    <script src="misScripts.js"></script>
+    <link rel="stylesheet" href="misEstilos.css">
+</head>
+<body onload="listarNotas()">
+    <h1>Bienvenido a tu boletín estudiantil</h1>
+    <h2>Alumno: Jason Todd</h2>
+    <h3>Notas:</h3>
+    <ul id="listaNotas"></ul>
+
+    <div class="section-title">Promedio:</div>
+
+    <button onclick="calcularPromedio()">Calcular promedio</button>
+    <div id="resultado-promedio" class="result-box"></div>
+
+    <div class="section-title">Nota más alta:</div>
+    <button onclick="notaMasAlta()">Buscar nota más alta</button>
+    <div id="resultado-alta" class="result-box"></div>
+
+    <div class="section-title">¿Hubo algún aplazo?</div>
+    <button onclick="hayAplazados()">Consultar aplazo</button>
+    <div id="resultado-aplazados" class="result-box"></div>
+
+
+</body>
+</html>
