@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Estación Central</title>
+    <script src="misScripts.js"></script>
+    <link rel="stylesheet" href="misEstilos.css">
+</head>
+<body onload="listarTemp()">
+    <h1>Estación Central</h1>
+    <h2>San Rafael de Alajuela</h2>
+    <h2>Temperaturas:</h2>
+    <ul id="listaTemp"></ul>
+
+    <div class="section-title">Promedio:</div>
+
+    <button onclick="calcularPromedio()">Calcular promedio</button>
+    <div id="resultado-promedio"></div>
+
+    <div class="section-title">Temperatura más alta:</div>
+    <button onclick="temperaturaMasAlta()">Buscar temperatura más alta</button>
+    <div id="resultado-alta"></div>
+
+    <div class="section-title">¿Hubo dias frios?</div>
+    <button onclick="hayFrio()">Consultar dias frios</button>
+    <div id="resultado-frio"></div>
+
+
+</body>
+</html>
